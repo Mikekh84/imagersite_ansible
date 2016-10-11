@@ -1,0 +1,25 @@
+user_home: /home/ubuntu
+django_home: "{{ user_home }}/foodlust"
+venv_home: "{{ user_home }}/venv"
+rds_db_instance: fl_db
+system_packages:
+  - build-essential
+  - python-dev
+  - python-pip
+  - postgresql-client
+  - libpq-dev
+  - python-psycopg2
+  - git
+  - python-virtualenv
+  - libjpeg-dev
+  - libtiff-dev
+  - libjpeg8-dev
+  - zlib1g-dev
+  - libfreetype6-dev
+  - liblcms2-dev
+  - libwebp-dev
+  - tcl8.6-dev
+  - tk8.6-dev
+
+repo_version: master
+django_settings: FL.foodlust.settings
