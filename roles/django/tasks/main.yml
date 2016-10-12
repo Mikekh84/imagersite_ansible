@@ -45,11 +45,11 @@
 
 - name: Change Media Owner
   sudo: yes
-  file: path={{ media_path }} owner=ubuntu recurse=yes state=directory mode=775
+  file: path={{ media_path }} owner={{ app_user }} group={{ app_user }} recurse=yes state=directory mode=775
 
 - name: Change Static Owner
   sudo: yes
-  file: path={{ static_path }} owner=ubuntu recurse=yes state=directory
+  file: path={{ static_path }} owner={{ app_user }} group={{ app_user }} recurse=yes state=directory
 
 
 - name: Collect Static Files

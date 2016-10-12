@@ -31,3 +31,4 @@ DBNAME: fl_db
 DEBUG: False
 EMAIL_USER: foodlust.reg
 EMAIL_DEFAULT: "foodlust.reg@gmail.com"
+app_user: 'www-data'
