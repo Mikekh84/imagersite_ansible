@@ -1,6 +1,8 @@
 user_home: /home/ubuntu
 django_home: "{{ user_home }}/foodlust"
 venv_home: "{{ user_home }}/venv"
+media_path: "{{ django_home }}/media"
+static_path: "{{ django_home }}/static"
 rds_db_instance: fl-db
 system_packages:
   - build-essential

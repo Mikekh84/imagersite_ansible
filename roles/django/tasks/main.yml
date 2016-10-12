@@ -43,20 +43,29 @@
     settings: "{{ django_settings }}"
     command: migrate
 
-# - name: Collect Static Files
-#   environment:
-#     FL_SECURITY_KEY: "{{ FL_SECURITY_KEY }}"
-#     DBURL: "{{ db_host.ec2__address }}"
-#     DBUSER: "{{ DBUSER }}"
-#     DBPORT: "{{ DBPORT }}"
-#     DBPASS: "{{ DBPASS }}"
-#     DBNAME: "{{ DBNAME }}"
-#     EMAIL_USER: "{{ EMAIL_USER }}"
-#     EMAIL_DEFAULT: "{{ EMAIL_DEFAULT }}"
-#     EMAIL_PW: "{{ EMAIL_PW }}"
-#     DEBUG: False
-#   django_manage:
-#     virtualenv: "{{ venv_home }}"
-#     app_path: "{{ django_home }}"
-#     settings: foodlust.settings
-#     command: collectstatic
+- name: Change Media Owner
+  sudo: yes
+  file: path={{ media_path }} owner=ubuntu recurse=yes state=directory mode=775
+
+- name: Change Static Owner
+  sudo: yes
+  file: path={{ static_path }} owner=ubuntu recurse=yes state=directory
+
+
+- name: Collect Static Files
+  environment:
+    FL_SECURITY_KEY: "{{ FL_SECURITY_KEY }}"
+    DBURL: "{{ db_host.ec2__address }}"
+    DBUSER: "{{ DBUSER }}"
+    DBPORT: "{{ DBPORT }}"
+    DBPASS: "{{ DBPASS }}"
+    DBNAME: "{{ DBNAME }}"
+    EMAIL_USER: "{{ EMAIL_USER }}"
+    EMAIL_DEFAULT: "{{ EMAIL_DEFAULT }}"
+    EMAIL_PW: "{{ EMAIL_PW }}"
+    DEBUG: False
+  django_manage:
+    virtualenv: "{{ venv_home }}"
+    app_path: "{{ django_home }}"
+    settings: foodlust.settings
+    command: collectstatic
