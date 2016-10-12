@@ -2,7 +2,7 @@
 
 - name: Install Requirements
   sudo: yes
-  pip: name=gunicorn state=present
+  pip: name=gunicorn state=present virtualenv={{ venv_home }}
 
 - name: Create gunicorn Upstart Job
   sudo: yes
