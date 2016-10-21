@@ -52,21 +52,21 @@
   file: path={{ static_path }} owner={{ app_user }} group={{ app_user }} recurse=yes state=directory mode=775
 
 
-# - name: Collect Static Files
-#   become: true
-#   environment:
-#     FL_SECURITY_KEY: "{{ FL_SECURITY_KEY }}"
-#     DBURL: "{{ db_host.ec2__address }}"
-#     DBUSER: "{{ DBUSER }}"
-#     DBPORT: "{{ DBPORT }}"
-#     DBPASS: "{{ DBPASS }}"
-#     DBNAME: "{{ DBNAME }}"
-#     EMAIL_USER: "{{ EMAIL_USER }}"
-#     EMAIL_DEFAULT: "{{ EMAIL_DEFAULT }}"
-#     EMAIL_PW: "{{ EMAIL_PW }}"
-#     DEBUG: False
-#   django_manage:
-#     virtualenv: "{{ venv_home }}"
-#     app_path: "{{ django_home }}"
-#     settings: imagersite.settings
-#     command: collectstatic
+- name: Collect Static Files
+  become: true
+  environment:
+    FL_SECURITY_KEY: "{{ FL_SECURITY_KEY }}"
+    DBURL: "{{ db_host.ec2__address }}"
+    DBUSER: "{{ DBUSER }}"
+    DBPORT: "{{ DBPORT }}"
+    DBPASS: "{{ DBPASS }}"
+    DBNAME: "{{ DBNAME }}"
+    EMAIL_USER: "{{ EMAIL_USER }}"
+    EMAIL_DEFAULT: "{{ EMAIL_DEFAULT }}"
+    EMAIL_PW: "{{ EMAIL_PW }}"
+    DEBUG: False
+  django_manage:
+    virtualenv: "{{ venv_home }}"
+    app_path: "{{ django_home }}"
+    settings: imagersite.settings
+    command: collectstatic
