@@ -6,7 +6,7 @@
   with_items: "{{ system_packages }}"
 
 - name: Clone Django Repository
-  git: repo=https://github.com/FoodLust/FL.git
+  git: repo=https://github.com/welliam/imagersite.git
     dest={{ django_home }}
     force=yes depth=1
     verision = {{ repo_version }}
@@ -52,21 +52,21 @@
   file: path={{ static_path }} owner={{ app_user }} group={{ app_user }} recurse=yes state=directory mode=775
 
 
-- name: Collect Static Files
-  become: true
-  environment:
-    FL_SECURITY_KEY: "{{ FL_SECURITY_KEY }}"
-    DBURL: "{{ db_host.ec2__address }}"
-    DBUSER: "{{ DBUSER }}"
-    DBPORT: "{{ DBPORT }}"
-    DBPASS: "{{ DBPASS }}"
-    DBNAME: "{{ DBNAME }}"
-    EMAIL_USER: "{{ EMAIL_USER }}"
-    EMAIL_DEFAULT: "{{ EMAIL_DEFAULT }}"
-    EMAIL_PW: "{{ EMAIL_PW }}"
-    DEBUG: False
-  django_manage:
-    virtualenv: "{{ venv_home }}"
-    app_path: "{{ django_home }}"
-    settings: foodlust.settings
-    command: collectstatic
+# - name: Collect Static Files
+#   become: true
+#   environment:
+#     FL_SECURITY_KEY: "{{ FL_SECURITY_KEY }}"
+#     DBURL: "{{ db_host.ec2__address }}"
+#     DBUSER: "{{ DBUSER }}"
+#     DBPORT: "{{ DBPORT }}"
+#     DBPASS: "{{ DBPASS }}"
+#     DBNAME: "{{ DBNAME }}"
+#     EMAIL_USER: "{{ EMAIL_USER }}"
+#     EMAIL_DEFAULT: "{{ EMAIL_DEFAULT }}"
+#     EMAIL_PW: "{{ EMAIL_PW }}"
+#     DEBUG: False
+#   django_manage:
+#     virtualenv: "{{ venv_home }}"
+#     app_path: "{{ django_home }}"
+#     settings: imagersite.settings
+#     command: collectstatic
