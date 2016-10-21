@@ -1,0 +1,34 @@
+user_home: /home/ubuntu
+django_home: "{{ user_home }}/imagersite"
+venv_home: "{{ user_home }}/venv"
+media_path: "{{ django_home }}/media"
+static_path: "{{ django_home }}/static"
+rds_db_instance: imager
+system_packages:
+  - build-essential
+  - python-dev
+  - python-pip
+  - postgresql-client
+  - libpq-dev
+  - python-psycopg2
+  - git
+  - python-virtualenv
+  - libjpeg-dev
+  - libtiff-dev
+  - libjpeg8-dev
+  - zlib1g-dev
+  - libfreetype6-dev
+  - liblcms2-dev
+  - libwebp-dev
+  - tcl8.6-dev
+  - tk8.6-dev
+
+repo_version: master
+django_settings: imagersite.settings
+DBUSER: imageruser
+DBPORT: 5432
+DBNAME: imagerdb
+DEBUG: False
+EMAIL_USER: mikeimagersite
+EMAIL_DEFAULT: "mikeimagersite@gmail.com"
+app_user: 'www-data'
