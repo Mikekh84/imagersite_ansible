@@ -1,1 +1,2 @@
-# FL_Ansible
+# imagersite_ansible
+Ansible Playbook to launch Imagersite
